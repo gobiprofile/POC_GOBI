@@ -15,8 +15,10 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<spring-cloud-gcp.version>5.0.3</spring-cloud-gcp.version>
-		<spring-cloud.version>2023.0.0</spring-cloud.version>
+		<!-- <spring-cloud-gcp.version>5.0.3</spring-cloud-gcp.version>
+		<spring-cloud.version>2023.0.0</spring-cloud.version> -->
+		<spring-cloud-gcp.version>3.7.9</spring-cloud-gcp.version>
+		<spring-cloud.version>2021.0.8</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
