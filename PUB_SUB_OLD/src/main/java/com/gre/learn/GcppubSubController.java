@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GcppubSubController {
 
+	@Value("${gcp.topicName}")
+	private String topicName;
+	
+	@Value("${gcp.subscriptionName}")
+	private String subscriptionName;
+
 	private final PubSubTemplate pubSubTemplate;
 
 	private final PubSubAdmin pubSubAdmin;
@@ -44,6 +50,18 @@ public class GcppubSubController {
 		for (String msg : list) {
 			System.out.println("Message :"+ msg);
 		}
+
+		return "Subscribed.";
+	}
+
+	@PostConstruct
+	public String subscribe() {
+		this.pubSubTemplate.subscribe(subscriptionName, message -> {
+			String message1 = message.getPubsubMessage().getData().toStringUtf8();
+			System.out.println("Message received from " + subscriptionName + " subscription: "
+					+ message1);
+			message.ack();
+		});
 
 		return "Subscribed.";
 	}
